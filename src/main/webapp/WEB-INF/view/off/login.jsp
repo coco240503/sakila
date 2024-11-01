@@ -19,16 +19,32 @@
 	<h1>Staff Login</h1>
 	<span>${msg}</span>
 
-	<form action="${pageContext.request.contextPath}/off/login" method="post">
+	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
 		<div class="mb-3 mt-3">
-			<label for="staffId" class="form-label">staffId:</label>
-			<input type="text" class="form-control" id="staffId" name="staffId">
+			<label for="staffId" class="form-label">Staff Id</label>
+			<input id="staffId" name="staffId" type="text" class="form-control">
 	 	</div>
 	 	<div class="mb-3">
-			<label for="password" class="form-label">password:</label>
-			<input type="password" class="form-control" id="password" name="password">
+			<label for="password" class="form-label">Password</label>
+			<input id="password" name="password" type="password" class="form-control">
 		</div>
-		<button type="submit" class="btn btn-primary">로그인</button>
+		<button id="btn" type="button" class="btn btn-primary">로그인</button>
 	</form>
 </body>
+
+<script>
+	// btn 버튼 클릭 시 폼값 유효성 검사 (Id: 숫자, Pw: 4자 이상)
+	$('#btn').click(function(){
+		console.log('click');
+		 // 숫자가 아니면 isNaN() or $.isNumeric()
+		if($.isNumeric($('#staffId').val()) == false){
+			alert('Staff Id는 숫자만 입력 가능');
+		} else if($('#password').val().length < 4){
+			alert('Password는 4자 이상');
+		} else {
+			$('#form').submit();
+		}
+	});
+</script>
 </html>
+

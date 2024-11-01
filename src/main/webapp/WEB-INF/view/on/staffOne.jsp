@@ -18,7 +18,7 @@
 		
 		<div class="cal-sm-10">
 			<!-- main content -->
-			<h2>Main</h2>
+			<h2>Staff One</h2>
 		</div>
 	</div>
 </body>
