@@ -15,18 +15,16 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
-<body class="container">
+<body class="container col-6">
 	<h1>Staff Login</h1>
 	<span>${msg}</span>
 
 	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
 		<div class="mb-3 mt-3">
-			<label for="staffId" class="form-label">Staff Id</label>
-			<input id="staffId" name="staffId" type="text" class="form-control">
+			<input id="staffId" name="staffId" type="text" class="form-control" placeholder="Staff Id">
 	 	</div>
 	 	<div class="mb-3">
-			<label for="password" class="form-label">Password</label>
-			<input id="password" name="password" type="password" class="form-control">
+			<input id="password" name="password" type="password" class="form-control" placeholder="Password">
 		</div>
 		<button id="btn" type="button" class="btn btn-primary">로그인</button>
 	</form>

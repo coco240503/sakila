@@ -11,12 +11,12 @@
 </head>
 <body class="container-flud">
 	<div class="row">
-		<div class="cal-sm-2">
+		<div class="col-sm-2 bg-light">
 			<!-- leftMune.jsp include -->
 			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
 		</div>
 		
-		<div class="cal-sm-10">
+		<div class="col-sm-10">
 			<!-- main content -->
 			<h2>Main</h2>
 		</div>
