@@ -9,7 +9,8 @@
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light">지점 추가</a>
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light">지점 수정</a>
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light fw-bold">::STAFF 관리::</a>
-  <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light">STAFF 추가</a>
+  <a href="${pageContext.request.contextPath}/on/staffList" class="list-group-item list-group-item-action bg-light">STAFF List</a>
+  <a href="${pageContext.request.contextPath}/on/addStaff" class="list-group-item list-group-item-action bg-light">STAFF 추가</a>
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light">STAFF 수정</a>
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light fw-bold">::고객 관리::</a>
   <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action bg-light">고객</a>
