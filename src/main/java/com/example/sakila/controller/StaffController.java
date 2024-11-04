@@ -1,5 +1,6 @@
 package com.example.sakila.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,8 +28,21 @@ public class StaffController {
 	@Autowired StoreMapper storeMapper;
 	@Autowired AddressMapper addressMapper;
 	
+	// active 수정 - 활성화, 비활성화
+	@GetMapping("/on/modifyStaffActive")
+	public String modifyStaffActive(Staff staff) {
+		if(staff.getActive() == 1) {
+			staff.setActive(2);
+		} else {
+			staff.setActive(1);
+		}
+		int row = staffMapper.updateStaff(staff); // 어떤 컬럼값을 수정하든 mapper 매서드는 하나
+		log.debug("Staff Update row: " + row);
+		
+		return "redirect:/on/staffList";
+	}
 	
-	// <leftMenu.a태그, addStaff.주소검색>에서 넘어옴
+	// staff 추가 - <leftMenu.a태그, addStaff.주소검색>에서 넘어옴
 	@GetMapping("/on/addStaff")
 	public String addStaff(Model model, @RequestParam(defaultValue="") String searchAddress) {
 		// model(storeList)
@@ -48,12 +62,39 @@ public class StaffController {
 	@PostMapping("/on/addStaff")
 	public String addStaff(Staff staff) { // 커맨드 객체 생성 -> 커맨드 객체.set(request.getPrameter())
 		// insert 호출
+		log.debug(staff.toString());
+		int row = staffMapper.insertStaff(staff);
+		log.debug("row: "+row);
+		if(row == 0) { // 입력 실패시 입력페이지로 포워딩
+			return "on/addStaff";
+		}
 		return "redirect:/on/staffList";
 	}
 	
 	@GetMapping("/on/staffList")
-	public String staffList(Model model,@RequestParam(defaultValue="1") int currentPage) {
+	public String staffList(Model model
+							,@RequestParam(defaultValue="1") int currentPage
+							,@RequestParam(defaultValue="10") int rowPerPage) {
 		// model(staffList)
+		Map<String, Object> map = new HashMap<>();
+		int beginRow = (currentPage-1)*rowPerPage;
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		log.debug(map.toString());
+		
+		List<Staff> staffList = staffMapper.selectStaffList(map); 
+		log.debug(staffList.toString());
+		
+		int count = staffMapper.selectStaffCount();
+		int lastPage = count / rowPerPage;
+		if(count%rowPerPage != 0) {
+			lastPage += 1;
+		}
+		
+		model.addAttribute("staffList",staffList);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("lastPage",lastPage);
+		
 		return "on/staffList";
 	}
 	

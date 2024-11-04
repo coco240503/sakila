@@ -128,6 +128,13 @@
 					<td>${staff.managerName}</td>
 				</tr>
 			</table>
+			<br>
+			<div>
+				<a href="">비밀번호 수정</a><br>
+				<a href="">이메일 수정</a><br>
+				<a href="">주소 수정</a><br>
+				<a href="">Store 수정</a>
+			</div>
 		</div>
 	</div>
 </body>
