@@ -1,5 +1,8 @@
 package com.example.sakila.vo;
 
+import lombok.Data;
+
+@Data
 public class ActorFile {
 	private int actorFileId; // PK
 	private int actorId; // FK

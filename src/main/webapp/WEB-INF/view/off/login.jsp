@@ -15,8 +15,7 @@
 		    position: absolute;
 		    top: 50%;
 		    left: 50%;
-		    transform: translate(-50%, -50%);
-		    width: 40%; /* 또는 원하는 너비 */
+		    transform: translate(-50%, -50%); /* 중앙에 위치 */
 		}
 		 .seven h1 {
 			text-align: center;
@@ -50,19 +49,20 @@
 	<meta charset="UTF-8">
 	<title></title>
 </head>
-<body class="container login-container">
+<body class="login-container">
 	<div class="seven"><h1>Staff Login</h1></div>
 	<span>${msg}</span>
 
 	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
-		
 		<div class="mb-3 mt-3">
 			<input id="staffId" name="staffId" type="text" class="form-control" placeholder="Staff Id">
 	 	</div>
 	 	<div class="mb-3">
 			<input id="password" name="password" type="password" class="form-control" placeholder="Password">
 		</div>
-		<button id="btn" type="button" class="btn btn-primary">로그인</button>
+		<div class="d-grid gap-2 col-6 mx-auto">
+			<button id="btn" type="button" class="btn btn-primary">로그인</button>
+		</div>
 	</form>
 </body>
 

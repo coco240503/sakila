@@ -16,7 +16,6 @@
             margin-top: 15px;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.9rem;
         }
 
         /* 테이블 셀 스타일 */

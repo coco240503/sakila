@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -92,9 +91,9 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>ADD STAFF</h1>
+				<h1>ADD STAFF <i class="fa-solid fa-id-card-clip"></i></h1>
 					<span>Staff 추가</span>
-			</div><br>
+			</div>
 				
 			<div style="border-radius: 5px; padding: 20px; width: 80%;">		
 				<h3>주소 검색</h3>
@@ -137,7 +136,9 @@
 						<input type="text" name="username" id="username"><br>
 					<label for="password">Password</label> 
 						<input type="password" name="password" id="password">
-					<button id="btnAddStaff" type="button" class="btn btn-outline-primary">Staff 추가</button>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<button id="btnAddStaff" type="button" class="btn btn-outline-primary">Staff 추가</button>
+					</div>
 				</form>
 			</div>
 		</div>
