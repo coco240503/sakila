@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=undo"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>ActorList</title>
+<title></title>
 <style>
 	.two h1:before {
 	  position: absolute;
@@ -48,7 +49,6 @@
 	  line-height: 1.3;
 	}
 </style>
-
 </head>
 <body class="container-flud">
 	<div class="row">
@@ -60,56 +60,24 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>ACTOR LIST</h1>
-				<span>배우 리스트</span>
+				<h1>FILM ONE</h1>
+				<span>영화 상세정보</span>
 			</div>
 			<br>
-			<table class="table table-hover" style="width:80%">
-				<thead>
-					<tr>
-						<th>Actor ID</th>
-						<th>Name</th>
-					<tr>
-				</thead>
-				<c:forEach var="a" items="${actorList}">
-					<tr>
-						<td>${a.actorId}</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
-							 ${a.firstName} ${a.lastName}</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
+			<div>${film}</div>
+			<div>
+				<h2>출연 배우들</h2>
+				<div>
+					<c:forEach var="a" items="${actorList}">
+						<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">${a.firstName} ${a.lastName}</a>
+					</c:forEach>
+				</div>
+			</div>
 			
-			<!-- 페이징 -->
-			<nav>
-				<ul class="pagination pagination-lg justify-content-center">
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage-1}" aria-label="Previous"> 
-						<span aria-hidden="true">&laquo;</span></a>
-					</li>
-					<li class="page-item"><span class="page-link">${currentPage}</span></li>
-					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage+1}" aria-label="Next"> 
-						<span aria-hidden="true">&raquo;</span></a>
-					</li>
-				</ul>
-			</nav>
-
-			<form id="formSearch" action="${pageContext.request.contextPath}/on/actorList" method="get">
-				<input type="text" name="searchWord" id="searchWord">
-				<button id="btnSearch">이름 검색</button>
-			</form>
+			<br>
+			<a href="javascript:history.back()" class="material-symbols-outlined" style="font-size: 24px;">undo</a>
 		</div>
+		
 	</div>
 </body>
-<script>
-	$('#btnSearch').click(function(){
-		if($('#searchWord').val()==''){
-			alert('검색어를 입력하세요');
-			return;
-		}
-		$('#formSearch').submit();
-	});
-</script>
 </html>

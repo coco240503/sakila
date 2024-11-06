@@ -1,7 +1,9 @@
 package com.example.sakila.service;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,35 @@ import lombok.extern.slf4j.Slf4j;
 public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
+	
+	// /on/filmOne
+	public List<Actor> getActorListByFilm(int filmId){
+		return actorMapper.selectActorListByFilm(filmId);
+	}
+	
+	// /on/actorOne
+	public Actor getActorOne(int actorId) {
+		return actorMapper.selectActorOne(actorId);
+	}
+	
+	public int getLastPage(int rowPerPage, String searchWord) {
+		int count = actorMapper.selectActorCount(searchWord);
+		int lastPage = count / rowPerPage;
+		if(count%rowPerPage != 0) {
+			lastPage += 1;
+		}
+		return lastPage;
+	}
+	
+	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
+		Map<String,Object> paramMap = new HashMap<>();
+		int beginRow = (currentPage-1)*rowPerPage;
+		paramMap.put("beginRow", beginRow);
+		paramMap.put("rowPerPage", rowPerPage);
+		paramMap.put("searchWord", searchWord);
+		
+		return actorMapper.selectActorList(paramMap);
+	}
 	
 	public void addActor(ActorForm actorForm, String path) {
 		Actor actor = new Actor();
@@ -65,7 +96,5 @@ public class ActorService {
 				 }
 			}
 		}
-		
-		
 	}
 }

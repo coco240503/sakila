@@ -63,19 +63,21 @@
 				<span>STAFF LIST</span>
 			</div>
 			<br>
-			<table class="table" style="width:80%">
-				<tr>
-					<td>Staff Id</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Address Id</td>
-					<td>Email</td>
-					<td>Store Id</td>
-					<td>User Name</td>
-					<td>Last Update</td>
-					<td>Active</td>
-					<td>활성화</td>
-				</tr>
+			<table class="table table-hover" style="width:80%">
+				<thead>
+					<tr>
+						<th>Staff Id</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Address Id</th>
+						<th>Email</th>
+						<th>Store Id</th>
+						<th>User Name</th>
+						<th>Last Update</th>
+						<th>Active</th>
+						<th>활성화</th>
+					</tr>
+				</thead>
 				<c:forEach var='s' items="${staffList}">
 					<tr>
 						<td>${s.staffId}</td>

@@ -92,7 +92,9 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center"> <!-- colspan으로 두 열 병합, 가운데 정렬 -->
-							<button type="button" id="btnAddActor" class="btn btn-outline-primary">배우 추가</button>
+							<button type="button" id="btnAddActor" class="btn btn-outline-primary">
+								<i class="fa-solid fa-user-plus fa-2x"></i>
+							</button>추가
 						</td>
 					</tr>
 				</table>

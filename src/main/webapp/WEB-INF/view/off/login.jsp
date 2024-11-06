@@ -55,10 +55,10 @@
 
 	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
 		<div class="mb-3 mt-3">
-			<input id="staffId" name="staffId" type="text" class="form-control" placeholder="Staff Id">
+			<input id="staffId" name="staffId" type="text" class="form-control" placeholder="Staff Id" value="1">
 	 	</div>
 	 	<div class="mb-3">
-			<input id="password" name="password" type="password" class="form-control" placeholder="Password">
+			<input id="password" name="password" type="password" class="form-control" placeholder="Password" value="1234">
 		</div>
 		<div class="d-grid gap-2 col-6 mx-auto">
 			<button id="btn" type="button" class="btn btn-primary">로그인</button>

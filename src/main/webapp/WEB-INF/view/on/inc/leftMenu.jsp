@@ -13,7 +13,7 @@
 </style>
 
 <div class="list-group text-center">
-  <a href="${pageContext.request.contextPath}/on/main" class="list-group-item list-group-item-action bg-light fw-bold"><i class="fa-solid fa-house"></i></a>
+  <a href="${pageContext.request.contextPath}/on/main" class="list-group-item list-group-item-action bg-primary fw-bold"><i class="fa-solid fa-house"></i></a>
   <a href="${pageContext.request.contextPath}/on/staffOne" class="list-group-item list-group-item-action bg-light fw-bold">${loginStaff.username}님</a>
   <a href="${pageContext.request.contextPath}/on/logout" class="list-group-item list-group-item-action">로그아웃</a>
   
