@@ -64,7 +64,42 @@
 				<span>영화 상세정보</span>
 			</div>
 			<br>
+			<h2><i class="fa-solid fa-film"></i></h2>
 			<div>${film}</div>
+			<table class="table">
+				<tr>
+					<td>Film Id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Title</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Release Year</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Language</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Original Language</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Length</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Rating</td>
+					<td></td>
+				</tr>
+			</table>
+			
+			<div>
+				<a href="${pageContext.request.contextPath}/on/">영화 수정</a>
+			</div>
 			<div>
 				<h2>출연 배우들</h2>
 				<div>

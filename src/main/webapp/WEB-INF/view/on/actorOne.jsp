@@ -82,7 +82,7 @@
 				</tr>
 			</table>
 			<div>
-				<a href=""><i class="fa-solid fa-user-pen"></i> actor 수정</a>
+				<a href="${pageContext.request.contextPath}/on/modifyActor"><i class="fa-solid fa-user-pen"></i> actor 수정</a>
 			</div>
 			
 			
@@ -106,7 +106,7 @@
 				</c:forEach>
 			</table>
 			<div>
-				<a href=""><i class="fa-regular fa-image"></i> 이미지파일 추가</a>
+				<a href="${pageContext.request.contextPath}/on/addActorFile?actorId=${actor.actorId}"><i class="fa-regular fa-image"></i> 이미지파일 추가</a>
 			</div>
 			
 			<!-- FILM -->

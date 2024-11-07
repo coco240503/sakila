@@ -89,43 +89,41 @@
 		</div>
 
 		<div class="col-sm-10">
-			<!-- main content -->
 			<div class="two">
 				<h1>ADD STAFF <i class="fa-solid fa-id-card-clip"></i></h1>
 					<span>Staff 추가</span>
 			</div>
-				
-			<div style="border-radius: 5px; padding: 20px; width: 80%;">		
-				<h3>주소 검색</h3>
-				<form id="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
-					<input id="searchAddress" type="text" name="searchAddress">
-					<button type="button" id="btnAddress" class="btn btn-outline-primary">주소 검색</button>
-				</form>
-				<br>
-				<div>
-					<h4>주소를 선택하세요</h4>
+			<br>
+			<!-- main content -->
+			<div style="border-radius: 5px; background-color: #f2f2f2; padding: 20px; width: 80%;">
+				<!-- 주소 폼-->
+				<label>주소 검색</label>
+					<form id="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
+						<input id="searchAddress" type="text" name="searchAddress">
+						<button type="button" id="btnAddress" class="btn btn-outline-primary">주소 검색</button>
+					</form>
+					
+				<lable>주소를 선택하세요</lable>
 					<select id="resultAddress" size="5">
 						<c:forEach var="a" items="${addressList}">
 							<option value="${a.addressId}">[ID: ${a.addressId}] ${a.address}</option>
 						</c:forEach>
 					</select> <br>
 					<button type="button" id="btnAddrSel" class="btn btn-outline-primary">주소 선택</button>
-				</div>
-			</div>
-			<br>
-			<h4>입력 폼</h4>
-			<div style="border-radius: 5px; background-color: #f2f2f2; padding: 20px; width: 80%;">
+				
+				<!-- staff 추가 폼 -->
 				<form id="addForm" action="${pageContext.request.contextPath}/on/addStaff" method="post">
+					<label for="addressId">Address Id</label> 
+						<input type="text" id="addressId" name="addressId"><br>
+					
 					<label for="storeId">Store Id</label> 
 						<select name="storeId" id="storeId">
 								<option value="">:::선택:::</option>
 								<c:forEach var="s" items="${storeList}">
 									<option value="${s.storeId}">${s.storeId}</option>
 								</c:forEach>
-						</select>
-					<label for="addressId">Address Id</label> 
-						<input type="text" id="addressId" name="addressId"><br>
-					
+						</select><br>
+						
 					<label for="firstName">First Name</label> 
 						<input type="text" name="firstName" id="firstName"><br>
 					<label for="lastName">Last Name</label> 
@@ -141,12 +139,12 @@
 					</div>
 				</form>
 			</div>
+			
 		</div>
 	</div>
 </body>
 <script>
-	// action submit button
-	
+	// staff 추가 폼 제출
 	$('#btnAddStaff').click(function() {
 			// 입력폼 유효성 검사
 			console.log($('#storeId').val(), $('#firstName').val(),
@@ -177,19 +175,17 @@
 	// 주소 선택 button
 	$('#btnAddrSel').click(function() {
 			console.log($('#resultAddress').val());
-			if ($('#resultAddress').val() == ''
-					|| $('#resultAddress').val() == null) {
+			if ($('#resultAddress').val() == '' || $('#resultAddress').val() == null) {
 				alert('주소를 선택하세요');
 			} else {
 				$('#addressId').val($('#resultAddress').val());
 			}
 	});
 	// 주소 검색 button
-	$('#btnAddress').click(function() {
-		if ($('#searchAddress').val() == "") {
+	$('#btnAddress').click(function(){
+		if($('#searchAddress').val() == "") {
 			alert('검색어를 입력하세요');
 		} else {
-			console.log("검색어: " + $('#searchAddress').val());
 			$('#formAddress').submit();
 		}
 	});
