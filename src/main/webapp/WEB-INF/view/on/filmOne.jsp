@@ -65,7 +65,6 @@
 			</div>
 			<br>
 			<h2><i class="fa-solid fa-film"></i></h2>
-			<div>${film}</div>
 			<table class="table">
 				<tr>
 					<td>Film Id</td>
@@ -95,10 +94,38 @@
 					<td>Rating</td>
 					<td></td>
 				</tr>
+				<tr>
+					<td>Description</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Special Features</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="fw-bold"></td>
+				</tr>
+				<tr>
+					<td>Rental Duration</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Rental Rate($)</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Replacement Cost($)</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Last Update</td>
+					<td></td>
+				</tr>
 			</table>
 			
 			<div>
 				<a href="${pageContext.request.contextPath}/on/">영화 수정</a>
+				<a href="${pageContext.request.contextPath}/on/">영화 삭제</a>
 			</div>
 			<div>
 				<h2>출연 배우들</h2>
@@ -112,7 +139,20 @@
 			<br>
 			<a href="javascript:history.back()" class="material-symbols-outlined" style="font-size: 24px;">undo</a>
 		</div>
-		
 	</div>
 </body>
 </html>
+<!-- 
+	film 상세
+	film 수정 - on/modifyFilm 
+	film 삭제 - on/removeFilm (filmCatatory+filmActor+film 삭제)
+ 
+ 	filmCategory 리스트
+ 	filmCategory 추사 on/addFilmCategory -> 카테고리 전체 목록에서 선택
+ 	filmCategory 삭제 on/removeFilmCategory
+ 	
+ 	filmActor 리스트
+ 	filmActor 추가 on/addActorByFilm -> 배우 검색 후 선택
+ 	filmActor 삭제 on/removeFileActor
+ 	
+ -->

@@ -10,6 +10,11 @@ import com.example.sakila.vo.Actor;
 
 @Mapper
 public interface ActorMapper {
+	// /on/actorOne
+	int deleteActor(int actorId);
+	
+	int updateActor(Actor actor);
+	
 	// /on/filmOne
 	List<Actor> selectActorListByFilm(int filmId);
 	

@@ -18,6 +18,19 @@ import com.example.sakila.vo.ActorForm;
 public class ActorFileService {
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/removeActorFile
+	// 1. actor_file 삭제 2. 물리파일 삭제(이름,경로 필요)
+	public void removeActorFile(int actorFileId, String path) {
+		// 1. 파일 이름 select
+		ActorFile actorFile = actorFileMapper.selectActorFileOne(actorFileId);
+		int row = actorFileMapper.deleteActorFile(actorFileId);
+		if(row == 1) { // actorFile정보 삭제가 되었다면 물리적 파일삭제
+			String fullName = path + actorFile.getFilename()+"."+actorFile.getExt();
+			File f = new File(fullName); 
+			f.delete();
+		}
+	}
+	
 	// /on/addActorFile
 	public void addActorFile(ActorForm actorForm, String path) {
 		if(actorForm.getActorFile() != null) {
@@ -43,10 +56,8 @@ public class ActorFileService {
 					 try {
 						mf.transferTo(new File(path + filename +"."+ ext));
 					 } catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
-						// 예외 발생하고 예외처리 하지 않아야지 @Transactional 작동한다
-						// so... RuntimeException을 인위적으로 발생
+						// 예외 발생하고 예외처리 하지 않아야지 @Transactional 작동 --> RuntimeException을 인위적으로 발생
 						throw new RuntimeException();
 					 }
 				 }

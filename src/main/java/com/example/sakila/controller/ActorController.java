@@ -28,14 +28,46 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
+	// /on/actorOne - actor 삭제
+	@GetMapping("/on/removeActor")
+	public String removeActor(HttpSession session, @RequestParam int actorId) {
+		String path = session.getServletContext().getRealPath("/upload/");
+		actorService.removeActor(actorId, path);
+		return "redirect:/on/actorLsit";
+	}
+	
+	@PostMapping("/on/modifyActor")
+	public String modifyActor(Actor actor) {
+		log.debug(actor.toString());
+		
+		int row = actorService.modifyActor(actor);
+		
+		return "redirect:/on/actorOne?actorId="+actor.getActorId();
+	}
+	
+	// /on/actorOne - actor 수정
+	@GetMapping("/on/modifyActor")
+	public String modifyActor(Model model,@RequestParam int actorId) {
+		Actor actor = actorService.getActorOne(actorId);
+		model.addAttribute("actor",actor);
+		return "on/modifyActor";
+	}
+	
 	@GetMapping("/on/actorOne")
-	public String actorOne(Model model, @RequestParam int actorId) {
+	public String actorOne(Model model, @RequestParam int actorId
+							, @RequestParam(defaultValue = "") String searchTitle) { // searchWord가 공백이면 actorOne 요청, 공백 아니면 film검색 요청
 		Actor actor = actorService.getActorOne(actorId);
 		List<ActorFile> actorFileList = actorFileService.getActorFileListByActor(actorId);
 		List<Film> filmList = filmService.getFilmTitleListByActor(actorId);
 		log.debug(actor.toString());
 		log.debug(actorFileList.toString());
 		log.debug(filmList.toString());
+		
+		if(searchTitle.equals("") == false) { // 영화 제목 검색어가 있다면 -> film 검색 결과 리스트 추가
+			log.debug("searchTitle: "+ searchTitle);
+			List<Film> searchFilmList = filmService.getFilmListByTitle(searchTitle);
+			model.addAttribute("searchFilmList",searchFilmList);
+		}
 		
 		model.addAttribute("actor",actor);
 		model.addAttribute("actorFileList",actorFileList);
@@ -49,7 +81,7 @@ public class ActorController {
 							,@RequestParam(defaultValue="1") int currentPage
 							,@RequestParam(defaultValue="10") int rowPerPage
 							,@RequestParam(required=false) String searchWord) { // 디폴트:required=true->400에러남-아무것도 넘어오지않음
-		// log.debug(searchWord);
+		log.debug(searchWord);
 		
 		int lastPage = actorService.getLastPage(rowPerPage, searchWord);
 		List<Actor> actorList = actorService.getActorList(currentPage, rowPerPage, searchWord);

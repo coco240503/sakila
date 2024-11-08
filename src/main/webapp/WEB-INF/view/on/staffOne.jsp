@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -10,28 +11,46 @@
 <title></title>
 
 <style>
-        /* 공통 테이블 스타일 */
-        .table-custom {
-            width: 800px; 
-            margin-top: 15px;
-            border-collapse: collapse;
-            text-align: left;
-        }
+.two h1:before {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 60px;
+	height: 2px;
+	content: "";
+	background-color: #0059b8;
+}
 
-        /* 테이블 셀 스타일 */
-        .table-custom th, .table-custom td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        .table-custom th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-        /* 열 너비*/
-        .col-20 { width: 20%; }
-        .col-80 { width: 80%; }
-    </style>
+.two h1 span {
+	font-size: 13px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	line-height: 3em;
+	padding-left: 0.25em;
+	color: rgba(0, 0, 0, 0.4);
+	padding-bottom: 10px;
+}
 
+h1 {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	font-family: "Raleway", sans-serif;
+	font-weight: 300;
+	font-size: 40px;
+	color: #080808;
+	-webkit-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+}
+
+h1 span {
+	display: block;
+	font-size: 0.5em;
+	line-height: 1.3;
+}
+</style>
 </head>
 <body class="container-flud">
 	<div class="row">
@@ -39,17 +58,17 @@
 			<!-- leftMune.jsp include -->
 			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
 		</div>
-		
-		<div class="container mt-3 col-sm-10">
+			
+		<div class="col-sm-10">
 			<!-- main content -->
-			<h2>${staff.firstName} ${staff.lastName}님</h2>
-			<br>
-			<h4>나의 정보</h4>
-			<table class="table-custom">
-				<colgroup>
-			        <col class="col-20">
-			        <col class="col-80">
-			    </colgroup>
+			<div class="two">
+				<h1>${staff.firstName} ${staff.lastName}님</h1>
+				<span>Staff 정보<span>
+			</div>
+			<br>	
+			
+			<h2><i class="fa-solid fa-id-card-clip"></i> 나의 정보</h2>
+			<table class="table" style="width:80%">
 				<tr>
 					<td>ID</td>
 					<td>${staff.staffId}</td>
@@ -80,12 +99,8 @@
 				</tr>
 			</table>
 			
-			<h4>Store</h4>
-			<table class="table-custom">
-				<colgroup>
-			        <col class="col-20">
-			        <col class="col-80">
-			    </colgroup>
+			<h2><i class="fa-solid fa-shop"></i> Store</h2>
+			<table class="table" style="width:80%">
 				<tr>
 					<td>Store ID</td>
 					<td>${staff.staffId}</td>
@@ -112,12 +127,8 @@
 				</tr>
 			</table>
 			
-			<h4>Manager</h4>
-			<table class="table-custom">
-				<colgroup>
-			        <col class="col-20">
-			        <col class="col-80">
-			    </colgroup>
+			<h2><i class="fa-solid fa-user"></i> Manager</h2>
+			<table class="table" style="width:80%">
 				<tr>
 					<td>ID</td>
 					<td>${staff.managerId}</td>

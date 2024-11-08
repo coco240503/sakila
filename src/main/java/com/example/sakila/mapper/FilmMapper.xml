@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
-	<!--  -->
+	<!-- 영화 제목 검색 -->
+	<select id="selectFilmListByTitle" parameterType="String" resultType="com.example.sakila.vo.Film">
+		SELECT
+			film_id filmId
+			, title
+		FROM film
+		WHERE title LIKE CONCAT('%',#{searchTitle},'%')
+	</select>
+	
+	<!-- 영화 추가 -->
 	<insert id="insertFilm" parameterType="com.example.sakila.vo.Film">
 		INSERT INTO film(
 				title
@@ -20,7 +29,6 @@
 				,#{originalLanguageId},#{rentalDuration},#{rentalRate}
 				,#{length},#{replacementCost},#{rating},#{specialFeatures}
 		)
-		
 	</insert>
 	
 	<!-- filmOne -->
@@ -43,14 +51,14 @@
 		WHERE fi.film_id=#{filmId}
 	</select>
 
-	<!-- /on/actorOne -->
+	<!-- /on/actorOne 배우의 출연 영화 -->
 	<select id="selectFilmTitleListByActor" parameterType="int" resultType="com.example.sakila.vo.Film">
 		SELECT f.film_id filmId
 				, f.title title
+				, f.release_year releaseYear
 		FROM film_actor fa INNER JOIN film f
 		ON fa.film_id = f.film_id
 		WHERE fa.actor_id = #{actorId}
+		ORDER BY releaseYear
 	</select>
-
-
 </mapper>

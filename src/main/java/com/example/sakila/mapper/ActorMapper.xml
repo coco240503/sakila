@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.ActorMapper">
+	<!-- /on/actorOne - actor 삭제 -->
+	<delete id="deleteActor" parameterType="int">
+		DELETE FROM actor
+		WHERE actor_id = #{actorId}
+	</delete>
+
+	<!-- /on/actorOne - actor 수정 -->
+	<update id="updateActor" parameterType="com.example.sakila.vo.Actor">
+		UPDATE actor
+		<set>
+			<if test="firstName != null">
+				first_name = #{firstName}
+			</if>
+			<if test="lastName != null">
+				last_name = #{lastName}
+			</if>
+		</set>
+		WHERE actor_id = #{actorId}
+	</update>
 	
-	<!-- /on/filmOne -->
+	<!-- /on/filmOne - 영화 상세정보의 출연배우들 -->
 	<select id="selectActorListByFilm" parameterType="int" resultType="com.example.sakila.vo.Actor">
 		SELECT a.actor_id actorId
 				,a.first_name firstName
@@ -12,7 +31,7 @@
 		WHERE fa.film_id = #{filmId}
 	</select>
 
-
+	<!-- /on/actorOne - actor 정보 조회 -->
 	<select id="selectActorOne" parameterType="int" resultType="com.example.sakila.vo.Actor">
 		SELECT actor_id actorId
 				, first_name firstName
@@ -34,6 +53,7 @@
 	    </where>
 	</select>
 
+	<!-- 배우 리스트 -->
 	<select id="selectActorList" parameterType="Map" resultType="com.example.sakila.vo.Actor">
 		SELECT actor_id actorId
 				, first_name firstName
@@ -49,11 +69,11 @@
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 
+	<!-- 배우 추가 -->
 	<insert id="insertActor" parameterType="com.example.sakila.vo.Actor">
 		<selectKey resultType="int" keyProperty="actorId" order="AFTER">
 			select LAST_INSERT_ID()
 		</selectKey>
-		
 		INSERT INTO actor (
 			first_name, last_name
 		) VALUES(

@@ -20,6 +20,13 @@ import jakarta.servlet.http.HttpSession;
 public class ActorFileController {
 	@Autowired ActorFileService actorFileService;
 	
+	@GetMapping("/on/removeActorFile")
+	public String removeActorFile(HttpSession session, @RequestParam int actorFileId, @RequestParam int actorId) {
+		String path = session.getServletContext().getRealPath("/upload/");
+		actorFileService.removeActorFile(actorFileId, path);
+		return "redirect:/on/actorOne?actorId="+actorId;
+	}
+	
 	@GetMapping("/on/addActorFile")
 	public String addActorFile(Model model,@RequestParam int actorId) {
 		model.addAttribute("actorId",actorId);
