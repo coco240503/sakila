@@ -18,8 +18,8 @@
   <a href="${pageContext.request.contextPath}/on/logout" class="list-group-item list-group-item-action">로그아웃</a>
   
   <a class="list-group-item list-group-item-action bg-light fw-bold">:: 지점 관리 ::</a>
-  <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action">지점 추가</a>
-  <a href="${pageContext.request.contextPath}" class="list-group-item list-group-item-action">지점 수정</a>
+  <a href="${pageContext.request.contextPath}/on/storeList" class="list-group-item list-group-item-action">지점 리스트</a>
+  <a href="${pageContext.request.contextPath}/on/addStore" class="list-group-item list-group-item-action">지점 추가</a>
   
   <a class="list-group-item list-group-item-action bg-light fw-bold">:: STAFF 관리 ::</a>
   <a href="${pageContext.request.contextPath}/on/staffList" class="list-group-item list-group-item-action">STAFF List</a>
@@ -35,6 +35,8 @@
   <a href="${pageContext.request.contextPath}/on/addActor" class="list-group-item list-group-item-action">배우 추가</a>
   
   <a class="list-group-item list-group-item-action bg-light fw-bold">::영화 관리::</a>
+  <a href="${pageContext.request.contextPath}/on/languageList" class="list-group-item list-group-item-action">언어 리스트</a>
+  <a href="${pageContext.request.contextPath}/on/addLanguage" class="list-group-item list-group-item-action">언어 추가</a>
   <a href="${pageContext.request.contextPath}/on/filmList" class="list-group-item list-group-item-action">영화 리스트</a>
   <a href="${pageContext.request.contextPath}/on/addFilm" class="list-group-item list-group-item-action">영화 추가</a>
   

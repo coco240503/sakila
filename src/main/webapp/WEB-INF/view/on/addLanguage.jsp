@@ -63,56 +63,9 @@
 				<span>영화 목록</span>
 			</div>
 			<br>
-			<!-- 카테고리 선택 -->
-			<form id="formCategory" action="${pageContext.request.contextPath}/on/filmList" method="get">
-				<select name="categoryId" id="categoryId">
-					<option value="0">전체</option>
-					<c:forEach var="c" items="${categoryList}">
-						<c:if test="${c.categoryId == currentCategoryId}">
-							<option selected value="${c.categoryId}">${c.name}</option>
-						</c:if>
-						<c:if test="${c.categoryId != currentCategoryId}">
-							<option value="${c.categoryId}">${c.name}</option>
-						</c:if>
-					</c:forEach>
-				</select>
-			</form>
 			
-			<!-- filmList -->
-			<table class="table">
-				<tr>
-					<td>Film Id</td>
-					<td>Title</td>
-					<td>Rating</td>
-					<td>Length</td>
-					<td>Release Year</td>
-					<td>Rental Duration</td>
-					<td>Rental Rate</td>
-					<td>Replacement Cost</td>
-				</tr>
-				<c:forEach var="f" items="${filmList}">
-					<tr>
-						<td>${f.filmId}</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
-								${f.title}
-							</a>
-						</td>
-						<td>${f.rating}</td>
-						<td style="text-align: center;">${f.length}</td>
-						<td>${f.releaseYear}</td>
-						<td style="text-align: center;">${f.rentalDuration}</td>
-						<td style="text-align: center;">${f.rentalRate}</td>
-						<td style="text-align: center;">${f.replacementCost}</td>
-					</tr>
-				</c:forEach>
-			</table>
 		</div>
-	</div>	
+		
+	</div>
 </body>
-<script>
-	$('#categoryId').change(function() {
-		$('#formCategory').submit();
-	});
-</script>
 </html>

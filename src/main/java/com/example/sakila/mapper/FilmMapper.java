@@ -9,6 +9,12 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	// categoryId가 null이나 0이 아닐 때 
+	List<Map<String,Object>> selectFilmListByCategory(Map<String,Object> paramMap);
+	
+	//categoryId가 null이거나 0일 때  filmList
+	List<Map<String,Object>> selectFilmList(Map<String,Object> paramMap);
+	
 	// /on/actorOne film 검색
 	List<Film> selectFilmListByTitle(String searchTitle);
 	

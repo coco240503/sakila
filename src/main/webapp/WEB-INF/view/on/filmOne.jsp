@@ -145,7 +145,7 @@
 <!-- 
 	film 상세
 	film 수정 - on/modifyFilm 
-	film 삭제 - on/removeFilm (filmCatatory+filmActor+film 삭제)
+	film 삭제 - on/removeFilm (inventory 렌탈정보 확인 + filmCatatory+filmActor+film 삭제)
  
  	filmCategory 리스트
  	filmCategory 추사 on/addFilmCategory -> 카테고리 전체 목록에서 선택
@@ -155,4 +155,5 @@
  	filmActor 추가 on/addActorByFilm -> 배우 검색 후 선택
  	filmActor 삭제 on/removeFileActor
  	
+ 	inventory 정보
  -->

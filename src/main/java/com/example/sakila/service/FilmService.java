@@ -1,5 +1,6 @@
 package com.example.sakila.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +12,34 @@ import com.example.sakila.mapper.FilmMapper;
 import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	
+	// /on/filmList
+	public List<Map<String,Object>> getFilmList(Integer categoryId,int currentPage,int rowPerPage){
+		Map<String,Object> paramMap = new HashMap<>();
+		if(categoryId == null || categoryId == 0) {
+			paramMap.put("categoryId", null);
+		} else {
+			paramMap.put("categoryId", categoryId);
+		}
+		int beginRow= (currentPage-1)*rowPerPage;
+		paramMap.put("beginRow", beginRow);
+		paramMap.put("rowPerPage", rowPerPage);
+		
+		log.debug("paramMap: " + paramMap);
+		
+		if(paramMap.get("categoryId") == null) {
+			return filmMapper.selectFilmList(paramMap);
+		} else {
+			return filmMapper.selectFilmListByCategory(paramMap);
+		}
+	}
 	
 	// /on/ 영화 검색
 	public List<Film> getFilmListByTitle(String searchTitle){
