@@ -35,6 +35,8 @@
   <a href="${pageContext.request.contextPath}/on/addActor" class="list-group-item list-group-item-action">배우 추가</a>
   
   <a class="list-group-item list-group-item-action bg-light fw-bold">::영화 관리::</a>
+  <a href="${pageContext.request.contextPath}/on/categoryList" class="list-group-item list-group-item-action">카테고리</a>
+  <a href="${pageContext.request.contextPath}/on/addCategory" class="list-group-item list-group-item-action">카테고리 추가</a>
   <a href="${pageContext.request.contextPath}/on/languageList" class="list-group-item list-group-item-action">언어 리스트</a>
   <a href="${pageContext.request.contextPath}/on/addLanguage" class="list-group-item list-group-item-action">언어 추가</a>
   <a href="${pageContext.request.contextPath}/on/filmList" class="list-group-item list-group-item-action">영화 리스트</a>

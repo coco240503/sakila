@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.sakila.mapper.CategoryMapper;
+import com.example.sakila.mapper.FilmActorMapper;
 import com.example.sakila.mapper.FilmMapper;
 import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
@@ -19,6 +21,23 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	@Autowired FilmActorMapper filmActorMapper;
+	@Autowired CategoryMapper categoryMapper;
+	
+	// /on/modifyFilm
+	public Integer modifyFilm(Film film) {
+		return filmMapper.updateFilm(film);
+	}
+	
+	// /on/removeFilm
+	public void removeFilmByKey(Integer filmId) {
+		// 1) film_category
+		categoryMapper.deleteFilmCategoryByFilm(filmId);
+		// 2) film_actor 삭제
+		filmActorMapper.deleteFilmActorByFilm(filmId);
+		// 3) film 삭제
+		filmMapper.deleteFilmByKey(filmId);
+	}
 	
 	// /on/filmList
 	public List<Map<String,Object>> getFilmList(Integer categoryId,int currentPage,int rowPerPage){

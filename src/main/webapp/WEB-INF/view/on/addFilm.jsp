@@ -19,7 +19,7 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>ADD FILM &#127916; <i class="fa-solid fa-film"></i></h1>
+				<h1>ADD FILM <i class="fa-solid fa-clapperboard"></i></h1>
 				<span>영화 추가</span>
 			</div>
 			<br>

@@ -59,8 +59,8 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>FILM LIST <i class="fa-solid fa-film"></i></h1>
-				<span>영화 목록</span>
+				<h1>ADD STORE <i class="fa-solid fa-shop"></i></h1>
+				<span>지점 추가</span>
 			</div>
 			<br>
 			

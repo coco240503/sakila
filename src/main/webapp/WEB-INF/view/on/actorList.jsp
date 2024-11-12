@@ -68,12 +68,12 @@
 				<thead>
 					<tr>
 						<th>Actor ID</th>
-						<th>Name</th>
+						<th>Name <i class="fa-solid fa-link"></i></th>
 					<tr>
 				</thead>
 				<c:forEach var="a" items="${actorList}">
 					<tr>
-						<td>${a.actorId}</td>
+						<td>&nbsp; ${a.actorId}</td>
 						<td>
 							<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
 							 ${a.firstName} ${a.lastName}</a>
@@ -85,20 +85,33 @@
 			<!-- 페이징 -->
 			<nav>
 				<ul class="pagination pagination-lg justify-content-center">
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage-1}" aria-label="Previous"> 
+					<li class="page-item"> <!-- 처음 -->
+						<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=1" aria-label="Previous"> 
 						<span aria-hidden="true">&laquo;</span></a>
 					</li>
+					<c:if test="${currentPage > 1}"> <!-- 0 안보이게 -->
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage-1}">${currentPage-1}</a>
+						</li>
+					</c:if>
 					<li class="page-item"><span class="page-link">${currentPage}</span></li>
-					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage+1}" aria-label="Next"> 
+					
+					<c:if test="${currentPage < lastPage}">
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage+1}">${currentPage+1}</a>
+						</li>
+					</c:if>
+					<li class="page-item"><!-- 마지막 -->
+						<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${lastPage}" aria-label="Next"> 
 						<span aria-hidden="true">&raquo;</span></a>
 					</li>
 				</ul>
 			</nav>
-
+			
 			<form id="formSearch" action="${pageContext.request.contextPath}/on/actorList" method="get">
+				<i class="fa-solid fa-magnifying-glass"></i> &nbsp;
 				<input type="text" name="searchWord" id="searchWord">
-				<button id="btnSearch">이름 검색</button>
+				<button id="btnSearch" class="btn btn-outline-primary">이름 검색</button>
 			</form>
 		</div>
 	</div>

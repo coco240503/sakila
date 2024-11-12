@@ -9,6 +9,12 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	// /on/modifyFilm
+	Integer updateFilm(Film film);
+	
+	// /on/removeFilm
+	Integer deleteFilmByKey(Integer filmId);
+	
 	// categoryId가 null이나 0이 아닐 때 
 	List<Map<String,Object>> selectFilmListByCategory(Map<String,Object> paramMap);
 	

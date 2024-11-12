@@ -67,7 +67,7 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>ADD ACTOR</h1>
+				<h1>ADD ACTOR <i class="fa-solid fa-user-plus"></i></h1>
 				<span>배우 추가</span>
 			</div>
 			<br>

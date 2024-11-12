@@ -33,7 +33,7 @@ public class ActorController {
 	public String removeActor(HttpSession session, @RequestParam int actorId) {
 		String path = session.getServletContext().getRealPath("/upload/");
 		actorService.removeActor(actorId, path);
-		return "redirect:/on/actorLsit";
+		return "redirect:/on/actorList";
 	}
 	
 	@PostMapping("/on/modifyActor")

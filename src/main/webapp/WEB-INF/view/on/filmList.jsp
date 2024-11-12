@@ -59,7 +59,7 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>FILM LIST <i class="fa-solid fa-film"></i></h1>
+				<h1>FILM LIST <i class="fa-solid fa-clapperboard"></i></h1>
 				<span>영화 목록</span>
 			</div>
 			<br>
@@ -79,10 +79,10 @@
 			</form>
 			
 			<!-- filmList -->
-			<table class="table">
+			<table class="table table-hover">
 				<tr>
 					<td>Film Id</td>
-					<td>Title</td>
+					<td>Title <i class="fa-solid fa-link"></i></td>
 					<td>Rating</td>
 					<td>Length</td>
 					<td>Release Year</td>

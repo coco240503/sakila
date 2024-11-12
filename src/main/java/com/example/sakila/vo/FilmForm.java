@@ -12,9 +12,9 @@ public class FilmForm {
 	private int languageId; 
 	private Integer originalLanguageId; 
 	private int rentalDuration;
-	private double rentalRate;
+	private Double rentalRate;
 	private Integer length;
-	private double replacementCost;
+	private Double replacementCost;
 	private String rating;
 	private List<String> specialFeatures; // private String[] specialFeatures;
 }

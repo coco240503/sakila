@@ -127,7 +127,7 @@ h1 span {
 				</tr>
 			</table>
 			
-			<h2><i class="fa-solid fa-user"></i> Manager</h2>
+			<h2><i class="fa-solid fa-user-gear"></i> Manager</h2>
 			<table class="table" style="width:80%">
 				<tr>
 					<td>ID</td>

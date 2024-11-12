@@ -60,80 +60,127 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>FILM ONE</h1>
+				<h1>FILM ONE <i class="fa-solid fa-clapperboard"></i></h1>
 				<span>영화 상세정보</span>
 			</div>
 			<br>
-			<h2><i class="fa-solid fa-film"></i></h2>
-			<table class="table">
+			<h3><i class="fa-solid fa-clapperboard"></i> [ ${film.title} ]</h3>
+			<table class="table" style="width:80%">
 				<tr>
 					<td>Film Id</td>
-					<td></td>
+					<td>${film.filmId}</td>
 				</tr>
 				<tr>
 					<td>Title</td>
-					<td></td>
+					<td>${film.title}</td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td>
+						<c:forEach var="fc" items="${filmCategoryList}">
+							${fc.name}
+						</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<td>Release Year</td>
-					<td></td>
+					<td>${film.releaseYear}</td>
 				</tr>
 				<tr>
 					<td>Language</td>
-					<td></td>
+					<td>${film.language}</td>
 				</tr>
 				<tr>
 					<td>Original Language</td>
-					<td></td>
+					<td>${film.originalLanguage}</td>
 				</tr>
 				<tr>
 					<td>Length</td>
-					<td></td>
+					<td>${film.length} 분</td>
 				</tr>
 				<tr>
 					<td>Rating</td>
-					<td></td>
+					<td>${film.rating}</td>
 				</tr>
 				<tr>
 					<td>Description</td>
-					<td></td>
+					<td>${film.description}</td>
 				</tr>
 				<tr>
 					<td>Special Features</td>
-					<td></td>
+					<td>${film.specialFeatures}</td>
 				</tr>
+				<tr>
+					<td>출연진 <i class="fa-solid fa-link"></i></td>
+					<td><c:forEach var="a" items="${actorList}">
+						<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">${a.firstName} ${a.lastName}</a>
+					</c:forEach></td>
+				</tr>
+				
 				<tr>
 					<td colspan="2" class="fw-bold"></td>
 				</tr>
 				<tr>
 					<td>Rental Duration</td>
-					<td></td>
+					<td>${film.rentalDuration} 일</td>
 				</tr>
 				<tr>
-					<td>Rental Rate($)</td>
-					<td></td>
+					<td>Rental Rate</td>
+					<td>$ ${film.rentalRate}</td>
 				</tr>
 				<tr>
-					<td>Replacement Cost($)</td>
-					<td></td>
+					<td>Replacement Cost</td>
+					<td>$ ${film.replacementCost}</td>
 				</tr>
 				<tr>
 					<td>Last Update</td>
-					<td></td>
+					<td>${film.lastUpdate}</td>
 				</tr>
 			</table>
 			
 			<div>
-				<a href="${pageContext.request.contextPath}/on/">영화 수정</a>
-				<a href="${pageContext.request.contextPath}/on/">영화 삭제</a>
+				<a href="${pageContext.request.contextPath}/on/modifyFilm?filmId=${film.filmId}">
+					<i class="fa-solid fa-pen-to-square"></i>영화 수정</a> &nbsp;
+				<a href="${pageContext.request.contextPath}/on/removeFilm?filmId=${film.filmId}">
+					<i class="fa-solid fa-trash-can"></i>영화 삭제</a>
+				<span style="color:Tomato;">${removeFilmMsg}</span>
 			</div>
+			
+			<br>
 			<div>
-				<h2>출연 배우들</h2>
+				<!-- model.CategoryList -->
 				<div>
-					<c:forEach var="a" items="${actorList}">
-						<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">${a.firstName} ${a.lastName}</a>
+					<c:forEach var="fc" items="${filmCategoryList}">
+						<h4>Category: ${fc.name} &nbsp; <a href="">삭제</a></h4>
 					</c:forEach>
 				</div>
+				<!-- 카테고리 추가 -->
+				<form method="post">
+					<select name="categoryId" id="categoryId">
+						<option value="">카테고리 선택</option>
+						<!-- model.allCategoryList -->
+						<c:forEach var ="ac" items="${allCategoryList}">
+							<option value="${ac.categoryId}">${ac.name}</option>
+						</c:forEach>
+					</select>
+					<button type="button">+category+</button>
+				</form>
+			</div>
+			
+			<div>
+				<h4>출연 배우</h4>
+				<!-- 배우 검색 -->
+				<form action="">
+					<input type="text" name="searchName">
+					<button type="button">이름 검색</button>
+				</form>
+
+				<form method="post">
+					<select name="actorId" id="actorId" size="5">
+						<option value="">배우 선택</option>
+					</select>
+					<button type="button">+actor+</button>
+				</form>
 			</div>
 			
 			<br>
@@ -142,18 +189,3 @@
 	</div>
 </body>
 </html>
-<!-- 
-	film 상세
-	film 수정 - on/modifyFilm 
-	film 삭제 - on/removeFilm (inventory 렌탈정보 확인 + filmCatatory+filmActor+film 삭제)
- 
- 	filmCategory 리스트
- 	filmCategory 추사 on/addFilmCategory -> 카테고리 전체 목록에서 선택
- 	filmCategory 삭제 on/removeFilmCategory
- 	
- 	filmActor 리스트
- 	filmActor 추가 on/addActorByFilm -> 배우 검색 후 선택
- 	filmActor 삭제 on/removeFileActor
- 	
- 	inventory 정보
- -->

@@ -98,22 +98,25 @@ h1 span {
 			</h2>
 			<table class="table" style="text-align: center; width:80%">
 				<tr>
-					<td>Image</td>
+					<td>Image(1:1)</td>
 					<td>Type</td>
 					<td>Size</td>
 					<td>Create Date</td>
 					<td>DELETE</td>
 				</tr>
 				<c:forEach var="af" items="${actorFileList}">
-					<td><img src="${pageContext.request.contextPath}/upload/${af.filename}.${af.ext}">
-					</td>
-					<td>${af.type}</td>
-					<td>${af.size}Byte</td>
-					<td>${af.createDate}</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/on/removeActorFile?actorFileId=${af.actorFileId}&actorId=${actor.actorId}"
-						class="fa-solid fa-trash"></a> <!-- 파일 삭제 아이콘 -->
-					</td>
+					<tr>
+						<td>
+							<img src="${pageContext.request.contextPath}/upload/${af.filename}.${af.ext}" style="width: 150px; height: 150px;">
+						</td>
+						<td>${af.type}</td>
+						<td>${af.size}Byte</td>
+						<td>${af.createDate}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/removeActorFile?actorFileId=${af.actorFileId}&actorId=${actor.actorId}"
+								class="fa-solid fa-trash"></a> <!-- 파일 삭제 아이콘 -->
+						</td>
+					</tr>
 				</c:forEach>
 			</table>
 			<div>
@@ -121,10 +124,10 @@ h1 span {
 			</div>
 
 			<!-- FILM -->
-			<h2><i class="fa-solid fa-film"></i> 출연 작품	</h2>
+			<h2><i class="fa-solid fa-clapperboard"></i> 출연 작품	</h2>
 			<table class="table" style="width:80%">
 				<tr>
-					<td>Title</td>
+					<td>&nbsp;Title <i class="fa-solid fa-link"></i></td>
 					<td style="text-align: center;">Release Year</td>
 					<td style="text-align: center;">DELETE</td>
 				</tr>
@@ -145,12 +148,12 @@ h1 span {
 				</c:forEach>
 			</table>
 			<div>
-				<h4>출연 작품 추가</h4>
+				<h4><i class="fa-solid fa-plus"></i> 출연 작품 추가</h4>
 				<!-- 영화 검색 폼-->
 				<form id="formSearchFilm" method="get" action="${pageContext.request.contextPath}/on/actorOne">
 					<input type="hidden" name="actorId" value="${actor.actorId}"> <!-- 영화 검색 시 actorId 같이 전송 -->
 					<input type="text" name="searchTitle">
-					<button id="btnSearchFilm" type="button">영화 검색</button>
+					<button id="btnSearchFilm" type="button" class="btn btn-outline-primary">영화 검색</button>
 				</form>
 				<!-- 영화 추가 폼 -->
 				<form id="formAddFilm" method="post" action="${pageContext.request.contextPath}/on/addFilmByActor">
@@ -181,15 +184,3 @@ h1 span {
 
 </script>
 </html>
-<!-- 
-	actor 삭제
-	actor 수정 - on/moldifyActor
-	actor 삭제 - on/removeActor (actorFile+fileActor+actor 삭제)
-	
-	actorFile 리스트 / 추가 / 
-	actorFile 삭제 - on/removeActorFile
-	
-	filmActor 리스트 
-	filmActor 추가 - on/addFilmActor -> 영화 검색 후 선택
-	filmActor 삭제 - on/removeFilmActor
- -->
