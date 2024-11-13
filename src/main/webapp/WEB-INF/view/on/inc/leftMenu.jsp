@@ -20,6 +20,7 @@
   <a class="list-group-item list-group-item-action bg-light fw-bold">:: 지점 관리 ::</a>
   <a href="${pageContext.request.contextPath}/on/storeList" class="list-group-item list-group-item-action">지점 리스트</a>
   <a href="${pageContext.request.contextPath}/on/addStore" class="list-group-item list-group-item-action">지점 추가</a>
+  <a href="${pageContext.request.contextPath}/on/addInventory" class="list-group-item list-group-item-action">인벤토리 추가</a>
   
   <a class="list-group-item list-group-item-action bg-light fw-bold">:: STAFF 관리 ::</a>
   <a href="${pageContext.request.contextPath}/on/staffList" class="list-group-item list-group-item-action">STAFF List</a>

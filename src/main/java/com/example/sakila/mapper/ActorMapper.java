@@ -10,6 +10,9 @@ import com.example.sakila.vo.Actor;
 
 @Mapper
 public interface ActorMapper {
+	// /on/filmOne : searchName 검색 결과
+	List<Actor> selectActorListByActor(String searchName);
+	
 	// /on/actorOne
 	int deleteActor(int actorId);
 	
@@ -21,6 +24,7 @@ public interface ActorMapper {
 	// /on/actorOne
 	Actor selectActorOne(int actorId);
 	
+	// /on/actorList
 	List<Actor> selectActorList(Map<String,Object> map);
 	
 	int insertActor(Actor actor);

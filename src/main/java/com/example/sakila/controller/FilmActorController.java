@@ -20,17 +20,28 @@ public class FilmActorController {
 		log.debug("removeFilmActor filmId: "+filmActor.getFilmId());
 		log.debug("actorId: "+filmActor.getActorId());
 		
-		int row = filmActorService.removeFilmActor(filmActor);
+		filmActorService.removeFilmActor(filmActor);
 		return "redirect:/on/actorOne?actorId="+filmActor.getActorId();
 	}
 	
-	// actorOne에서 출연 영화 추가
-	@PostMapping("/on/addFilmByActor")
-	public String addFilmByActor(FilmActor filmActor) {
+	// /on/filmOne 배우 추가
+	@PostMapping("/on/addFilmActorByFilm")
+	public String addFilmActorByFilm(FilmActor filmActor) {
+		log.debug("addFilmActorByFilm filmId: "+filmActor.getFilmId());
+		log.debug("actorId: "+filmActor.getActorId());
+		
+		filmActorService.addFilmActor(filmActor);
+		
+		return "redirect:/on/actorOne?filmId="+filmActor.getFilmId();
+	}
+	
+	// /on/actorOne 출연 영화 추가
+	@PostMapping("/on/addFilmActorByActor")
+	public String addFilmActorByActor(FilmActor filmActor) {
 		log.debug("addFilmByActor filmId: "+filmActor.getFilmId());
 		log.debug("actorId: "+filmActor.getActorId());
 		
-		int row = filmActorService.addFilmActor(filmActor);
+		filmActorService.addFilmActor(filmActor);
 		
 		return "redirect:/on/actorOne?actorId="+filmActor.getActorId();
 	}

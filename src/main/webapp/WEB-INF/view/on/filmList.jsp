@@ -79,7 +79,7 @@
 			</form>
 			
 			<!-- filmList -->
-			<table class="table table-hover">
+			<table class="table table-hover" style="width:80%">
 				<tr>
 					<td>Film Id</td>
 					<td>Title <i class="fa-solid fa-link"></i></td>
@@ -99,11 +99,11 @@
 							</a>
 						</td>
 						<td>${f.rating}</td>
-						<td style="text-align: center;">${f.length}</td>
+						<td>${f.length}</td>
 						<td>${f.releaseYear}</td>
-						<td style="text-align: center;">${f.rentalDuration}</td>
-						<td style="text-align: center;">${f.rentalRate}</td>
-						<td style="text-align: center;">${f.replacementCost}</td>
+						<td>${f.rentalDuration}</td>
+						<td>${f.rentalRate}</td>
+						<td>${f.replacementCost}</td>
 					</tr>
 				</c:forEach>
 			</table>

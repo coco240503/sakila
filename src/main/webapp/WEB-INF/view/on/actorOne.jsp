@@ -156,14 +156,14 @@ h1 span {
 					<button id="btnSearchFilm" type="button" class="btn btn-outline-primary">영화 검색</button>
 				</form>
 				<!-- 영화 추가 폼 -->
-				<form id="formAddFilm" method="post" action="${pageContext.request.contextPath}/on/addFilmByActor">
+				<form id="formAddFilm" method="post" action="${pageContext.request.contextPath}/on/addFilmActorByActor">
 					<input type="hidden" name="actorId" value="${actor.actorId}">
 					<select size="5" name="filmId">
 						<c:forEach var="sf" items="${searchFilmList}">
 							<option value="${sf.filmId}">${sf.title}</option>
 						</c:forEach>
 					</select>
-					<button id="btnAddFilm" type="button" class="btn btn-outline-secondary"><i class="fa-regular fa-square-plus fa-2xl"></i> 추가</button>
+					<button id="btnAddFilm" type="button" class="btn btn-outline-primary">추가</button>
 				</form>
 			</div>
 			

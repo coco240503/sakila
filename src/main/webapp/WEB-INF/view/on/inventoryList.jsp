@@ -8,7 +8,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title></title>
-
 </head>
 <body class="container-flud">
 	<div class="row">
@@ -20,19 +19,27 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<div class="two">
-				<h1>STORE LIST <i class="fa-solid fa-shop"></i></h1>
-				<span>지점 목록</span>
+				<h1>INVENTORY LIST <i class="fa-solid fa-warehouse"></i></h1>
+				<span>인벤토리 리스트</span>
 			</div>
 			<br>
+			<h3>${storeId} 지점</h3>
 			<table class="table table-hover" style="width:80%">
 				<tr>
-					<td>storeId</td>
-					<td></td>
+					<td>Inventory Id</td>
+					<td>Film Id</td>
+					<td>Title <i class="fa-solid fa-link"></i></td>
+					<td>Last Update</td>
 				</tr>
-				<c:forEach var="s" items="${storeList}">
+				<c:forEach var="iv" items="${inventoryList}">
 					<tr>
-						<td>&nbsp; ${s.storeId}</td>
-						<td><a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리</a></td>
+						<td>&nbsp; ${iv.inventoryId}</td>
+						<td>${iv.filmId}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
+								${iv.title} </a>
+						</td>
+						<td>${iv.lastUpdate}</td>
 					</tr>
 				</c:forEach>
 			</table>

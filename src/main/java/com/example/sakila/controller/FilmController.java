@@ -49,6 +49,7 @@ public class FilmController {
 	
 	@GetMapping("/on/removeFilm")
 	public String removeFilm(Model model, @RequestParam Integer filmId) {
+		// 영화가 인벤토리에 등록되어 있다면 삭제 불가
 		Integer count = inventoryService.getCountInventoryByFilm(filmId);
 		if(count != 0) {
 			// msg 보내기 위해 filmOne 코드와 중복시킴
@@ -116,7 +117,7 @@ public class FilmController {
 	}
 	
 	@GetMapping("/on/filmOne")
-	public String filmOne(Model model,@RequestParam int filmId) {
+	public String filmOne(Model model,@RequestParam Integer filmId,@RequestParam(required = false) String searchName) {
 		
 		// 영화 정보
 		Map<String,Object> film = filmService.getFilmOne(filmId);
@@ -128,6 +129,12 @@ public class FilmController {
 		// 현재 영화의 카테고리 리스트
 		List<Map<String,Object>> filmCategoryList = categoryService.selectFilmCategoryListByFilm(filmId);
 		
+		// 배우 검색 리스트
+		if(searchName != null) { // 배우이름검색 버튼 클릭 - 요청
+			List<Actor> searchActorList = actorService.getActorListByActor(searchName);
+			model.addAttribute("searchActorList",searchActorList);
+		}
+		
 		// 출연 배우 리스트
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);
 		
@@ -138,5 +145,4 @@ public class FilmController {
 		
 		return "on/filmOne";
 	}
-	
 }

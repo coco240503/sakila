@@ -64,7 +64,7 @@
 				<span>영화 상세정보</span>
 			</div>
 			<br>
-			<h3><i class="fa-solid fa-clapperboard"></i> [ ${film.title} ]</h3>
+			<h2><i class="fa-solid fa-clapperboard"></i> [ ${film.title} ]</h2>
 			<table class="table" style="width:80%">
 				<tr>
 					<td>Film Id</td>
@@ -110,12 +110,6 @@
 					<td>Special Features</td>
 					<td>${film.specialFeatures}</td>
 				</tr>
-				<tr>
-					<td>출연진 <i class="fa-solid fa-link"></i></td>
-					<td><c:forEach var="a" items="${actorList}">
-						<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">${a.firstName} ${a.lastName}</a>
-					</c:forEach></td>
-				</tr>
 				
 				<tr>
 					<td colspan="2" class="fw-bold"></td>
@@ -150,12 +144,22 @@
 			<div>
 				<!-- model.CategoryList -->
 				<div>
-					<c:forEach var="fc" items="${filmCategoryList}">
-						<h4>Category: ${fc.name} &nbsp; <a href="">삭제</a></h4>
-					</c:forEach>
+					<h3>카테고리</h3>
+					<table class="table" style="width:10%">
+						<c:forEach var="fc" items="${filmCategoryList}">
+							<tr>	
+								<td>${fc.name}</td>
+								<td>
+									<a href="${pageContext.request.contextPath}/on/removeFilmCategory?filmId=${film.filmId}&categoryId=${fc.categoryId}">
+									<i class="fa-solid fa-xmark"></i><!-- 삭제 X표 --></a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				<!-- 카테고리 추가 -->
-				<form method="post">
+				<form id="formFilmCategory" method="post" action="${pageContext.request.contextPath}/on/addFilmCategory">
+					<input type="hidden" name="filmId" value="${film.filmId}">
 					<select name="categoryId" id="categoryId">
 						<option value="">카테고리 선택</option>
 						<!-- model.allCategoryList -->
@@ -163,23 +167,34 @@
 							<option value="${ac.categoryId}">${ac.name}</option>
 						</c:forEach>
 					</select>
-					<button type="button">+category+</button>
+					<button id="btnFilmCategory" type="button" class="btn btn-outline-primary">카테고리 추가</button>
 				</form>
 			</div>
-			
+			<br>
 			<div>
-				<h4>출연 배우</h4>
+				<h3>출연 배우</h3>
+				<c:forEach var="a" items="${actorList}">
+					<div>
+						<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">${a.firstName} ${a.lastName}</a>
+						&nbsp;
+						<a href="${pageContext.request.contextPath}/on/removeFilmActorByFilm?filmId=${film.filmId}&actorId=${a.actorId}">
+						<i class="fa-solid fa-xmark"></i><!-- 삭제 X표 --></a>
+					</div>
+				</c:forEach>
 				<!-- 배우 검색 -->
-				<form action="">
+				<form id="formSearchName" method="get" action="${pageContext.request.contextPath}/on/filmOne">
+					<input type="hidden" name="filmId" value="${film.filmId}">
 					<input type="text" name="searchName">
-					<button type="button">이름 검색</button>
+					<button id="btnSearchName" type="button" class="btn btn-outline-primary">이름 검색</button>
 				</form>
 
-				<form method="post">
+				<form id="formFilmActor" method="post" action="${pageContext.request.contextPath}/on/addFilmActorByFilm">
 					<select name="actorId" id="actorId" size="5">
-						<option value="">배우 선택</option>
+						<c:forEach var="sa" items="${searchActorList}">
+							<option value="${sa.actorId}">${sa.firstName} ${sa.lastName}</option>
+						</c:forEach>
 					</select>
-					<button type="button">+actor+</button>
+					<button id="btnFilmActor" type="button" class="btn btn-outline-primary">배우 추가</button>
 				</form>
 			</div>
 			
@@ -188,4 +203,30 @@
 		</div>
 	</div>
 </body>
+<script>
+	$('#btnFilmActor').click(function(){
+		if($('#actorId').val() == '' || $('#actorId').val() == null){
+			alert('배우를 선택하세요');
+		} else{
+			$('#formFilmActor').submit();
+		}
+	});
+
+	$('#btnSearchName').click(function(){
+		if($('#searchName').val() == ''){
+			alert('이름을 입력하세요');
+		} else{
+			$('#formSearchName').submit();
+		}
+	});
+
+	$('#btnFilmCategory').click(function(){
+		if($('#categoryId').val() == ''){
+			alert('category를 선택하세요');
+		} else{
+			$('#formFilmCategory').submit();
+		}
+	});
+
+</script>
 </html>
