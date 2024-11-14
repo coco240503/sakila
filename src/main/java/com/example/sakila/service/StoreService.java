@@ -13,6 +13,13 @@ import com.example.sakila.vo.Store;
 @Transactional
 public class StoreService {
 	@Autowired StoreMapper storeMapper;
+	
+	// /on/addStore
+	public Integer addStore(Store paramStore) {
+		return storeMapper.insertStore(paramStore);
+	}
+	
+	// /on/storeList
 	public List<Store> getStoreList(){
 		return storeMapper.selectStoreList();
 	}

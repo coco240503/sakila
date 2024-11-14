@@ -27,18 +27,19 @@
 			<table class="table table-hover" style="width:80%">
 				<tr>
 					<td>storeId</td>
+					<td>Manager Staff Id</td>
 					<td></td>
 				</tr>
 				<c:forEach var="s" items="${storeList}">
 					<tr>
 						<td>&nbsp; ${s.storeId}</td>
+						<td>${s.managerStaffId}</td>
 						<td><a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-			
+			&nbsp; <a href="${pageContext.request.contextPath}/on/addStore"><i class="fa-solid fa-house-chimney"></i> 지점 추가</a>
 		</div>
-		
 	</div>
 </body>
 </html>

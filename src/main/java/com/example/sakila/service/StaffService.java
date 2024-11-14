@@ -15,6 +15,10 @@ import com.example.sakila.vo.Staff;
 public class StaffService {
 	@Autowired private StaffMapper staffMapper;
 	
+	public List<Staff> getStaffListByStore(Staff paramStaff){
+		return staffMapper.selectStaffListByStore(paramStaff);
+	}
+	
 	public Map<String,Object> getStaffOne(int staffId){
 		return staffMapper.selectStaffOne(staffId);
 	}

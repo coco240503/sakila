@@ -73,7 +73,7 @@
 			<br>
 			<div style="border-radius: 5px; background-color: #f2f2f2; padding: 20px; width: 80%;">
 				<form id="formActor" method="post" action="${pageContext.request.contextPath}/on/addActor" enctype="multipart/form-data">
-					<table class="table" style="background-color: #f2f2f2;">
+					<table class="table" style="background-color: #f2f2f2; width: 80%;">
 						<tr>
 							<td>First Name </td>
 							<td><input type="text" name="firstName" id="firstName"></td>

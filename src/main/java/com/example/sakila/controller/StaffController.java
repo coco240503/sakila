@@ -45,8 +45,8 @@ public class StaffController {
 	// staff 추가 - <leftMenu.a태그, addStaff.주소검색>에서 넘어옴
 	@GetMapping("/on/addStaff")
 	public String addStaff(Model model, @RequestParam(defaultValue="") String searchAddress) {
-		// model(storeList)
 		log.debug("searchAddress: ",searchAddress);
+		// model(storeList)
 		List<Store> storeList = storeService.getStoreList();
 		model.addAttribute("storeList",storeList);
 		

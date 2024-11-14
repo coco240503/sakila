@@ -63,9 +63,43 @@
 				<span>지점 추가</span>
 			</div>
 			<br>
-			
+			<div style="border-radius: 5px; background-color: #f2f2f2; padding: 20px; width: 80%;">
+				<form id="formAddStore" action="${pageContext.request.contextPath}/on/addStore" method="post">
+					<table class="table" style="background-color: #f2f2f2; width: 80%;">
+						<tr>
+							<td>Manager Staff Id</td>
+							<td>
+								<select name="managerStaffId" id="managerStaffId">
+									<option value="">:::선택:::</option>
+									<c:forEach var="sl" items="${staffList}">
+										<option value="${sl.staffId}">${sl.staffId}</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Address Id</td>
+							<td><input type="number" id="addressId" name="addressId"></td>
+						</tr>
+					</table>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<button id="btnAddStore" type="button" class="btn btn-outline-primary">Store 추가</button>
+					</div>
+				</form>
+			</div>
 		</div>
-		
 	</div>
 </body>
+<script>
+	$('#btnAddStore').click(function(){
+		// 유효성 검사
+		if($('#managerStaffId').val() == ""){
+			alert('Manager Staff Id를 입력하세요');
+		} else if($('#addressId').val() == ""){
+			alert('Address Id를 입력하세요');
+		} else { // 모두 통과하면 폼 제출
+			$('#formAddStore').submit();
+		}
+	});
+</script>
 </html>

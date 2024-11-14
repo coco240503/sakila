@@ -9,6 +9,9 @@ import com.example.sakila.vo.Staff;
 
 @Mapper
 public interface StaffMapper {
+	// /on/addStore에서 managerStaffId 추가를 위한 staffList
+	List<Staff> selectStaffListByStore(Staff staff);
+	
 	// staff 활성화, 비활성화 - 업뎃문 하나로 모든 컬럼을 개별수정 가능하게
 	int updateStaff(Staff staff);
 	

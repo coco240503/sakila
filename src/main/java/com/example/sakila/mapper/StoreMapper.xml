@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.StoreMapper">
+	<!-- /on/addStore -->
+	<insert id="insertStore" parameterType="com.example.sakila.vo.Store">
+		INSERT INTO store(
+			store_id
+			,manager_staff_id
+			,address_id
+			,last_Update
+		)VALUES(
+			#{storeId}
+			,#{managerStaffId}
+			,#{addressId}
+			,NOW())
+	</insert>
+
+	<!-- /on/storeList -->
 	<select id="selectStoreList" parameterType="com.example.sakila.vo.Store">
-		SELECT store_id storeId FROM store
+		SELECT 
+			store_id storeId
+			,manager_staff_id managerStaffId
+		FROM store
 	</select>
 </mapper>
