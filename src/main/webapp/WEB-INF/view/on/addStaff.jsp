@@ -149,23 +149,17 @@
 			// 입력폼 유효성 검사
 			console.log($('#storeId').val(), $('#firstName').val(),
 					$('#lastName').val());
-			if ($('#storeId').val() == ''
-					|| $('#storeId').val() == null) {
+			if ($('#storeId').val() == '' || $('#storeId').val() == null) {
 				alert('Store Id를 입력하세요');
-			} else if ($('#firstName').val() == ''
-					|| $('#firstName').val() == null) {
+			} else if ($('#firstName').val() == '' || $('#firstName').val() == null) {
 				alert('FirstName을 입력하세요');
-			} else if ($('#lastName').val() == ''
-					|| $('#lastName').val() == null) {
+			} else if ($('#lastName').val() == '' || $('#lastName').val() == null) {
 				alert('LastName를 입력하세요');
-			} else if ($('#email').val() == ''
-					|| $('#email').val() == null) {
+			} else if ($('#email').val() == '' || $('#email').val() == null) {
 				alert('Email을 입력하세요');
-			} else if ($('#username').val() == ''
-					|| $('#username').val() == null) {
+			} else if ($('#username').val() == '' || $('#username').val() == null) {
 				alert('userName을 입력하세요');
-			} else if ($('#password').val() == ''
-					|| $('#password').val() == null) {
+			} else if ($('#password').val() == '' =|| $('#password').val() == null) {
 				alert('Password를 입력하세요');
 			} else {
 				console.log('submit...')

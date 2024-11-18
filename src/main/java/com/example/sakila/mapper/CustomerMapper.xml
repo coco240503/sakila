@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sakila.mapper.CustomerMapper">
+	<!-- /on/customerList -->
+	<select id="selectCustomerList" parameterType="Map" resultType="com.example.sakila.vo.Customer">
+		SELECT customer_id customerId
+				, first_name firstName
+				, last_name lastName
+				, address_id addressId
+				, email 
+				, store_id storeId
+				, active
+				, last_update lastUpdate
+				, create_date createDate
+		FROM customer
+		ORDER BY customer_id DESC
+		LIMIT #{beginRow},#{rowPerPage}
+	</select>
+	
+	<!-- customerList 페이징 -->
+	<select id="selectCustomerCount" resultType="Integer">
+		SELECT COUNT(*) FROM customer
+	</select>
+	
+	<!-- /on/addCustomer -->
+	<insert id="insertCustomer" parameterType="com.example.sakila.vo.Customer">
+		INSERT INTO customer(
+			store_id, first_name, last_name, email, address_id, create_date
+		) VALUES (
+			#{storeId},#{firstName},#{lastName},#{email},#{addressId},now()
+		)
+	</insert>
+</mapper>

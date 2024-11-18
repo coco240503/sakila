@@ -60,7 +60,7 @@
 			<!-- main content -->
 			<div class="two">
 				<h1>STAFF LIST <i class="fa-solid fa-id-card-clip"></i></h1>
-				<span>STAFF LIST</span>
+				<span>STAFF 리스트</span>
 			</div>
 			<br>
 			<table class="table table-hover" style="width:80%">

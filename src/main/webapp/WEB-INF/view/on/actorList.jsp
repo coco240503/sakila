@@ -82,6 +82,13 @@
 				</c:forEach>
 			</table>
 			
+			<!-- 배우 검색 -->
+			<form id="formSearch" action="${pageContext.request.contextPath}/on/actorList" method="get">
+				<i class="fa-solid fa-magnifying-glass"></i> &nbsp;
+				<input type="text" name="searchWord" id="searchWord">
+				<button id="btnSearch" class="btn btn-outline-primary">이름 검색</button>
+			</form>
+			
 			<!-- 페이징 -->
 			<nav>
 				<ul class="pagination pagination-lg justify-content-center">
@@ -94,7 +101,7 @@
 							<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage-1}">${currentPage-1}</a>
 						</li>
 					</c:if>
-					<li class="page-item"><span class="page-link">${currentPage}</span></li>
+					<li class="page-item"><span class="page-link" style="font-weight:bold;">${currentPage}</span></li>
 					
 					<c:if test="${currentPage < lastPage}">
 						<li class="page-item">
@@ -107,12 +114,6 @@
 					</li>
 				</ul>
 			</nav>
-			
-			<form id="formSearch" action="${pageContext.request.contextPath}/on/actorList" method="get">
-				<i class="fa-solid fa-magnifying-glass"></i> &nbsp;
-				<input type="text" name="searchWord" id="searchWord">
-				<button id="btnSearch" class="btn btn-outline-primary">이름 검색</button>
-			</form>
 		</div>
 	</div>
 </body>

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=undo"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -24,26 +25,35 @@
 			</div>
 			<br>
 			<h3>${storeId} 지점</h3>
-			<table class="table table-hover" style="width:80%">
-				<tr>
-					<td>Inventory Id</td>
-					<td>Film Id</td>
-					<td>Title <i class="fa-solid fa-link"></i></td>
-					<td>Last Update</td>
-				</tr>
-				<c:forEach var="iv" items="${inventoryList}">
+			<div>
+				<table class="table table-hover" style="width:80%">
 					<tr>
-						<td>&nbsp; ${iv.inventoryId}</td>
-						<td>${iv.filmId}</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
-								${iv.title} </a>
-						</td>
-						<td>${iv.lastUpdate}</td>
+						<td>Inventory Id</td>
+						<td>(Film Id) Title <i class="fa-solid fa-link"></i></td>
+						<td>Last Update</td>
+						<td>Delete</td>
 					</tr>
-				</c:forEach>
-			</table>
-			
+					<c:forEach var="iv" items="${inventoryList}">
+						<tr>
+							<td>&nbsp; ${iv.inventoryId}</td>
+							<td>
+								(${iv.filmId}) <a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
+									${iv.title} </a>
+							</td>
+							<td>${iv.lastUpdate}</td>
+							<td style="text-align: center;">
+								<a href="${pageContext.request.contextPath}/on/removeInventoryByKey?inventoryId=${iv.inventoryId}&storeId=${storeId}">
+								<i class="fa-solid fa-xmark"></i></a> <!-- 삭제 X 아이콘 -->
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${storeId}"><i class="fa-solid fa-warehouse"></i> 인벤토리 추가</a>
+			</div>
+			<br>
+			<div>
+				<a href="${pageContext.request.contextPath}/on/storeList" class="material-symbols-outlined" style="font-size: 24px;">undo</a>
+			</div>
 		</div>
 		
 	</div>

@@ -70,7 +70,7 @@
 					<td>
 						<form id="formRating" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
 							<input type="hidden" name="filmId" value="${film.filmId}">
-							<p style="color:Gray;">${film.rating}</p>
+							<p style="color:Gray;">${film.rating}</p> <!-- 원래 선택했던 것 -->
 							<input type="radio" name="rating" class="rating" value="G">G
 							<input type="radio" name="rating" class="rating" value="PG">PG
 							<input type="radio" name="rating" class="rating" value="PG-13">PG-13
@@ -99,7 +99,7 @@
 					<td>
 						<form id="formSpecialFeatures" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
 							<input type="hidden" name="filmId" value="${film.filmId}">
-							<p style="color:Gray;">${film.specialFeatures}</p>
+							<p style="color:Gray;">${film.specialFeatures}</p> <!-- 원래 선택했던 것 -->
 							<input type="checkbox" name="specialFeatures" class="specialFeatures" value="Trailers">Trailers
 							<input type="checkbox" name="specialFeatures" class="specialFeatures" value="Commentaries">Commentaries
 							<input type="checkbox" name="specialFeatures" class="specialFeatures" value="Deleted Scenes">Deleted Scenes

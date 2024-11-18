@@ -75,14 +75,6 @@
 					<td>${film.title}</td>
 				</tr>
 				<tr>
-					<td>Category</td>
-					<td>
-						<c:forEach var="fc" items="${filmCategoryList}">
-							${fc.name}
-						</c:forEach>
-					</td>
-				</tr>
-				<tr>
 					<td>Release Year</td>
 					<td>${film.releaseYear}</td>
 				</tr>
