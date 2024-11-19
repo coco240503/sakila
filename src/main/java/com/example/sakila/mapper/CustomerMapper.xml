@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.CustomerMapper">
+	<!-- /on/customerOne - customer 정보 + 주소 -->
+	<select id="selectCustomerOne" parameterType="Integer" resultType="Map">
+		SELECT 
+			c.customer_id customerId
+			, c.first_name firstName
+			, c.last_name lastName
+			, c.email email
+			, c.create_date createDate
+			, c.last_update lastUpdate
+			, a.address address
+			, a.district district
+			, a.postal_code postalCode
+			, a.phone phone
+		FROM customer c
+		INNER JOIN address a
+		ON c.address_id = a.address_id
+		WHERE c.customer_id = #{cutomerId}
+	</select>
+
+	<!-- /on/addRental -->
+	<select id="selectCustomerListByName" parameterType="String" resultType="com.example.sakila.vo.Customer">
+		SELECT 
+			customer_id as customerId,
+            store_id as storeId,
+            first_name as firstName,
+            last_name as lastName,
+            email,
+            address_id as addressId,
+            active,
+            create_date as createDate,
+            last_update as lastUpdate
+		FROM customer
+		WHERE active = 1 AND 
+		LOWER(CONCAT(first_name,last_name)) LIKE CONCAT('%',LOWER(#{searchName}),'%')
+	</select>
+	
 	<!-- /on/customerList -->
 	<select id="selectCustomerList" parameterType="Map" resultType="com.example.sakila.vo.Customer">
 		SELECT customer_id customerId

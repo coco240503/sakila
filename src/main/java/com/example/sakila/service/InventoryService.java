@@ -1,5 +1,6 @@
 package com.example.sakila.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +30,42 @@ public class InventoryService {
 		Map<String,Object> paramMap = new HashMap<>();
 		paramMap.put("storeId", storeId);
 		paramMap.put("rowPerPage", rowPerPage);
-		int beginRow = (currentPage-1)*rowPerPage;
+		Integer beginRow = (currentPage-1)*rowPerPage;
 		paramMap.put("beginRow", beginRow);
 		
-		return inventoryMapper.selectInventoryListBtStore(paramMap);
+		// 첫번째 페이지 넘버
+		Integer startPagingNum = (currentPage-1)/10*10+1; // '/'=몫
+		// 한페이지당 페이징개수 = 10
+		Integer numPerPage = 10;
+		// 마지막 페이지 넘버
+		Integer endPagingNum = startPagingNum+(numPerPage-1); // 1~10, 11~20
+		// 마지막은 x1~마지막페이지 (98 -> 91~98)
+		Integer lastPage = this.getLastPage(rowPerPage);
+		if(lastPage < endPagingNum) {
+			endPagingNum = lastPage;
+		}
+		
+		List<Map<String,Object>> inventoryList = inventoryMapper.selectInventoryListByStore(paramMap);
+		
+		Map<String,Object> resultMap = new HashMap<>();
+		resultMap.put("startPagingNum", startPagingNum);
+		resultMap.put("endPagingNum", endPagingNum);
+		resultMap.put("inventoryList", inventoryList);
+		
+		List<Map<String,Object>> resultList = new ArrayList<>();
+		resultList.add(resultMap);
+		
+		return resultList;
+	}
+	
+	// inventoryList 페이징
+	public Integer getLastPage(Integer rowPerPage) {
+		int count = inventoryMapper.selectInventoryCount();
+		int lastPage = count / rowPerPage;
+		if(count%rowPerPage != 0) {
+			lastPage ++;
+		}
+		return lastPage;
 	}
 	
 	// /on/reomoveFilm

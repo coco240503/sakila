@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Rental {
-	private int rentalId; // PK
+	private Integer rentalId; // PK
 	private String rentalDate; // Unique
-	private int inventoryId; // FK,Unique
-	private int customerId; // FK,Unique
+	private Integer inventoryId; // FK,Unique
+	private Integer customerId; // FK,Unique
 	private String returnDate;
-	private int staffId; // FK
+	private Integer staffId; // FK
 	private String lastUpdate;
 }

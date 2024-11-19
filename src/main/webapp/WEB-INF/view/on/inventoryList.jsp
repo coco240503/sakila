@@ -31,6 +31,8 @@
 						<td>Inventory Id</td>
 						<td>(Film Id) Title <i class="fa-solid fa-link"></i></td>
 						<td>Last Update</td>
+						<td>Rental</td> <!-- 대여가능/대여-고객id,대여날짜 -->
+						<td>Customer Id</td> <!-- 대여한 고객 -->
 						<td>Delete</td>
 					</tr>
 					<c:forEach var="iv" items="${inventoryList}">
@@ -41,6 +43,15 @@
 									${iv.title} </a>
 							</td>
 							<td>${iv.lastUpdate}</td>
+							<td>${iv.rentalDate}</td>
+							<td style="text-align: center;">
+								<c:if test="${iv.customerId != null}">
+									<a href="${pageContext.request.contextPath}/on/cutomerOne?customerId=${iv.customerId}">${iv.customerId}</a>
+								</c:if>
+								<c:if test="${iv.customerId == null}">
+									<a href="${pageContext.request.contextPath}/on/addRental?inventoryId=${iv.inventoryId}">대여</a>
+								</c:if>	
+							</td>
 							<td style="text-align: center;">
 								<a href="${pageContext.request.contextPath}/on/removeInventoryByKey?inventoryId=${iv.inventoryId}&storeId=${storeId}">
 								<i class="fa-solid fa-xmark"></i></a> <!-- 삭제 X 아이콘 -->
@@ -48,6 +59,48 @@
 						</tr>
 					</c:forEach>
 				</table>
+				
+				<!-- 페이징 -->
+				<nav style="width: 100%; text-align: center;">
+					<ul class="pagination pagination-lg justify-content-start" style="margin-right: 20%;">
+						<c:if test="${currentPage > 10}">
+							<li class="page-item"> <!-- 이전 10 페이지 -->
+								<a class="page-link" href="${pageContext.request.contextPath}/on/inventoryList?storeId=${storeId}&urrentPage=${currentPage-10}"> 
+								<span aria-hidden="true">&laquo;</span></a>
+							</li>
+						</c:if>
+						<c:if test="${currentPage <= 10}"> <!-- 이전 10 페이지가 없으면 비활성화-->
+							<li class="page-item disabled"> 
+						      <span class="page-link">&laquo;</span>
+						    </li>
+						</c:if>
+						
+						<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
+							<c:if test="${num == currentPage}">
+								<li class="page-item"><span class="page-link" style="font-weight:bold;">${num}</span></li>
+							</c:if>
+							<c:if test="${num != currentPage}">
+								<li class="page-item">
+									<a class="page-link" href="${pageContext.request.contextPath}/on/inventoryList?storeId=${storeId}&currentPage=${num}">${num}</a>
+								</li>
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${currentPage + 10 <= lastPage}">
+						    <li class="page-item"> <!-- 다음 10 페이지 -->
+						        <a class="page-link" href="${pageContext.request.contextPath}/on/inventoryList?storeId=${storeId}&currentPage=${currentPage + 10}" aria-label="Next">
+						            <span aria-hidden="true">&raquo;</span>
+						        </a>
+						    </li>
+						</c:if>
+						<c:if test="${currentPage + 10 > lastPage}"> <!-- 다음 10 페이지가 없으면 비활성화-->
+						    <li class="page-item disabled">
+						        <span class="page-link">&raquo;</span>
+						    </li>
+						</c:if>
+					</ul>
+				</nav>
+				
 				<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${storeId}"><i class="fa-solid fa-warehouse"></i> 인벤토리 추가</a>
 			</div>
 			<br>

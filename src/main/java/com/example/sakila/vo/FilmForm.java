@@ -9,9 +9,9 @@ public class FilmForm {
 	private String title;
 	private String description;
 	private Integer releaseYear;
-	private int languageId; 
+	private Integer languageId; 
 	private Integer originalLanguageId; 
-	private int rentalDuration;
+	private Integer rentalDuration;
 	private Double rentalRate;
 	private Integer length;
 	private Double replacementCost;

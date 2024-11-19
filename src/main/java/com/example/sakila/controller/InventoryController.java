@@ -55,9 +55,14 @@ public class InventoryController {
 								,@RequestParam Integer storeId
 								,@RequestParam(defaultValue="1") Integer currentPage
 								,@RequestParam(defaultValue="10") Integer rowPerPage) {
-		List<Map<String,Object>> inventoryList = inventoryService.getInventoryListByStore(storeId, currentPage, rowPerPage);
-		model.addAttribute("inventoryList",inventoryList);
+		List<Map<String,Object>> result = inventoryService.getInventoryListByStore(storeId, currentPage, rowPerPage);
+		Map<String,Object> resultMap = result.get(0); // List의 첫 번째 Map을 가져옴
+		
+		model.addAttribute("inventoryList", resultMap.get("inventoryList"));
 		model.addAttribute("storeId",storeId);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("startPagingNum", resultMap.get("startPagingNum"));
+		model.addAttribute("endPagingNum", resultMap.get("endPagingNum"));
 		
 		return "on/inventoryList";
 	}

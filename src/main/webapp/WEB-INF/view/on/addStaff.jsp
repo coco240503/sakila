@@ -113,10 +113,10 @@
 				
 				<!-- staff 추가 폼 -->
 				<form id="addForm" action="${pageContext.request.contextPath}/on/addStaff" method="post">
-					<label for="addressId">Address Id</label> 
+					<label>Address Id</label> 
 						<input type="text" id="addressId" name="addressId"><br>
 					
-					<label for="storeId">Store Id</label> 
+					<label>Store Id</label> 
 						<select name="storeId" id="storeId">
 								<option value="">:::선택:::</option>
 								<c:forEach var="s" items="${storeList}">
@@ -124,15 +124,15 @@
 								</c:forEach>
 						</select><br>
 						
-					<label for="firstName">First Name</label> 
+					<label>First Name</label> 
 						<input type="text" name="firstName" id="firstName"><br>
-					<label for="lastName">Last Name</label> 
+					<label>Last Name</label> 
 						<input type="text" name="lastName" id="lastName"><br>
-					<label for="email">Email</label> 
+					<label>Email</label> 
 						<input type="text" name="email" id="email"><br>
-					<label for="username">User Name</label> 
+					<label>User Name</label> 
 						<input type="text" name="username" id="username"><br>
-					<label for="password">Password</label> 
+					<label>Password</label> 
 						<input type="password" name="password" id="password">
 					<div class="d-grid gap-2 col-6 mx-auto">
 						<button id="btnAddStaff" type="button" class="btn btn-outline-primary">Staff 추가</button>

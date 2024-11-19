@@ -1,6 +1,5 @@
 package com.example.sakila.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +26,16 @@ public class CustomerController {
 	@Autowired CustomerService customerService;
 	@Autowired StoreService storeService;
 	@Autowired AddressService addressService;
+	
+	@GetMapping("/on/customerOne")
+	public String customerOne(Model model,@RequestParam Integer customerId) {
+		Map<String, Object> map = customerService.getCustomerOne(customerId);
+		log.debug("customerOne: "+map);
+		
+		model.addAttribute("customer",map);
+		
+		return "on/customerOne";
+	}
 	
 	@GetMapping("/on/customerList")
 	public String customerList(Model model,@RequestParam(defaultValue="1") Integer currentPage,@RequestParam(defaultValue="10") Integer rowPerPage) {
@@ -61,6 +70,7 @@ public class CustomerController {
 	@PostMapping("/on/addCustomer")
 	public String addCustomer(Customer customer) {
 		Integer row = customerService.addCustomer(customer);
+		log.debug("addCustomer row: "+row.toString());
 		// 추가 실패하면 addCustomer로 
 		return "redirect:/on/customerList";
 	}

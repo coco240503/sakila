@@ -40,7 +40,7 @@
 				<c:forEach var='cl' items="${customerList}">
 					<tr>
 						<td>&nbsp;${cl.customerId}</td>
-						<td><a href="">${cl.firstName} ${cl.lastName}</a></td>
+						<td><a href="${pageContext.request.contextPath}/on/customerOne?customerId=${cl.customerId}">${cl.firstName} ${cl.lastName}</a></td>
 						<td>${cl.addressId}</td>
 						<td>${cl.email}</td>
 						<td>${cl.storeId}</td>

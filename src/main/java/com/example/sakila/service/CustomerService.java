@@ -19,6 +19,17 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	// /on/customerOne
+	public Map<String, Object> getCustomerOne(Integer customerId) {
+		return customerMapper.selectCustomerOne(customerId);
+	}
+	
+	// /on/ customer 이름검색
+	public List<Customer> getCustomerListByName(String searchName){
+		return customerMapper.selectCustomerListByName(searchName);
+	}
+	
+	// /on/customerList
 	public Map<String,Object> getCustomerList(Integer currentPage, Integer rowPerPage){
 		Integer beginRow = (currentPage-1)*rowPerPage;
 		Map<String,Object> paramMap = new HashMap<>();
@@ -45,7 +56,7 @@ public class CustomerService {
 		resultMap.put("customerList", customerList);
 		return resultMap;
 	}
-	
+	// customerList 페이징
 	public Integer getLastPage(Integer rowPerPage) {
 		int count = customerMapper.selectCustomerCount();
 		int lastPage = count / rowPerPage;
@@ -55,6 +66,7 @@ public class CustomerService {
 		return lastPage;
 	}
 	
+	// /on/addCustomer
 	public Integer addCustomer(Customer customer) {
 		return customerMapper.insertCustomer(customer);
 	}

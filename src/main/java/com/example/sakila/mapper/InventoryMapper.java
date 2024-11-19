@@ -16,7 +16,10 @@ public interface InventoryMapper {
 	Integer insertInventory(Inventory inventory);
 	
 	// /on/inventoryList
-	List<Map<String,Object>> selectInventoryListBtStore(Map<String,Object> paramMap);
+	List<Map<String,Object>> selectInventoryListByStore(Map<String,Object> paramMap);
+	
+	// inventoryList 페이징
+	Integer selectInventoryCount();
 	
 	// /on/reomoveFilm
 	Integer selectCountInventoryByFilm(Integer filmId);

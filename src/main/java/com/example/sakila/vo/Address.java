@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Address {
-	private int addressId; // PK
+	private Integer addressId; // PK
 	private String address;
 	private String address2;
 	private String distrint;
-	private int cityId; // FK
+	private Integer cityId; // FK
 	private String postalCode;
 	private String phone;
 	private String lastUpdate;
